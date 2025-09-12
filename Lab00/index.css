@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap');
+
+:root {
+    --bg-dark: #3d3e44;
+    --bg-card: #1c1f24;
+    --bg-header: linear-gradient(180deg, #101215, #0b0d0f);
+    --bg-footer: #0c0e10;
+
+    --paper: #d9d6d1;
+    --text-main: #e6e4df;
+    --text-muted: #9a9996;
+
+    --accent-red: #7a2e2e;
+    --accent-yellow: #e6c65b;
+    --accent-blue: #3b4a60;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background:
+        radial-gradient(ellipse at 50% 275%, rgba(248, 189, 39, 0.849), transparent 70%),
+        var(--bg-dark) url("./images/textures/light-paper-fibers.png");
+    background-blend-mode: soft-light;
+    color: var(--text-main);
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* шум */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("./images/textures/broken-noise.png");
+    opacity: 0.5;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* шапка та футер */
+.site-header,
+.site-footer {
+    position: relative;
+    text-align: center;
+}
+
+.site-header {
+    background: var(--bg-header);
+    padding: 3rem 1rem;
+    border-bottom: 2px solid var(--accent-blue);
+    box-shadow: inset 0 -4px 25px rgba(0, 0, 0, 0.8);
+}
+
+.site-footer {
+    padding: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--bg-footer);
+    border-top: 1px solid #2a2a2a;
+}
+
+.site-header::before,
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("./images/textures/green-dust-and-scratches.png"),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 80%);
+    opacity: 0.75;
+    mix-blend-mode: soft-light;
+}
+
+.site-header h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--paper);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* картки з текстом */
+.card {
+    background: var(--bg-card);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("./images/textures/grunge-wall.png");
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--paper);
+}
+
+/* модифікатори карток */
+.card--negative {
+    border-left: 6px solid var(--accent-red);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6),
+        inset 0 0 40px rgba(82, 27, 27, 0.12);
+}
+
+.card--positive {
+    border-left: 6px solid var(--accent-yellow);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6),
+        inset 0 0 40px rgba(230, 198, 91, 0.1);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.75);
+}
+
+/* списки */
+.card ul {
+    list-style: none;
+}
+
+.card ul li {
+    margin: 0.6rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.card ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    font-size: 0.9rem;
+}
+
+.card--negative ul li::before {
+    color: var(--accent-red);
+}
+
+.card--positive ul li::before {
+    color: var(--accent-yellow);
+}
+
+.intro {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
